@@ -115,6 +115,21 @@ async def who_is(client, message):
             disable_notification=True
         )
 
+        os.remove(local_user_photo)
+    else:
+        buttons = [[
+            InlineKeyboardButton('🔐 𝗖𝗟𝗢𝗦𝗘', callback_data='close_data')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await message.reply_text(
+            text=message_out_str,
+            reply_markup=reply_markup,
+            quote=True,
+            parse_mode="html",
+            disable_notification=True
+        )
+    await status_message.delete()
+
 @Client.on_message(filters.command("help"))
 async def help(client, message):
       buttons = [[
@@ -135,22 +150,6 @@ async def help(client, message):
             parse_mode='html'
         )  
 
-
-
-        os.remove(local_user_photo)
-    else:
-        buttons = [[
-            InlineKeyboardButton('🔐 𝗖𝗟𝗢𝗦𝗘', callback_data='close_data')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await message.reply_text(
-            text=message_out_str,
-            reply_markup=reply_markup,
-            quote=True,
-            parse_mode="html",
-            disable_notification=True
-        )
-    await status_message.delete()
 
 @Client.on_message(filters.command(["imdb", 'search']))
 async def imdb_search(client, message):
