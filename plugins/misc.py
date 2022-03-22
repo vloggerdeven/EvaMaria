@@ -115,7 +115,7 @@ async def who_is(client, message):
 
 @Client.on_message(filters.command("help"))
 async def help(client, message):
-                  buttons = [[
+      buttons = [[
             InlineKeyboardButton('ᴍᴀɴᴜᴀʟ ғɪʟᴛᴇʀ', callback_data='manuelfilter'),
             InlineKeyboardButton('ᴀᴜᴛᴏғɪʟᴛᴇʀ', callback_data='autofilter')
         ], [
@@ -131,6 +131,9 @@ async def help(client, message):
             reply_markup=reply_markup,
             parse_mode='html'
         )  
+
+
+
         os.remove(local_user_photo)
     else:
         buttons = [[
